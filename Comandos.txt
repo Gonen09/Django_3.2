@@ -1,0 +1,21 @@
+Django
+	python -m django # lista commandos Django.
+	python -m django startproject [nombre] # crea un proyecto en Django, agregar un punto despues del nombre crear el proyecto en la misma carpeta.
+	python manage.py # lista de comandos para administrar django.
+Virtualenv
+	python -m venv [nombre] # crear entorno virtual, usar version especifica de python = C:\Python36\python.exe
+	[nombre]\Scripts\activate # activa el entorno virtual, aparece el nombre en el prompt.
+	deactivate # desactiva el entorno virtual, desaparece el nombre en el prompt.
+Pip
+
+	pip list  # ver paquetes instalados y su version.
+	python -m install --upgrade pip  # actualizar pip.
+	pip install -r [archivo] # permite instalar las dependencias del proyecto desde un archivo.
+
+Windows 
+	start [directorio] # abrir directorio en explorador de windows, con . abre el directorio actual.
+	color [fondo,letras] # cambiar colores consola, ingresar 3 argumentos para ver la lista de colores.
+	echo [palabra] # para mostrar mensaje por consola.
+	[contenido] > [nombre].txt # el contenido se guarda en el archivo de texto de una vez.
+	[contenido] >> [nombre].txt # el contenido se guarda en el archivo de texto varias veces (multilinea).
+	
