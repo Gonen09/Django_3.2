@@ -1,13 +1,21 @@
 Django
 	python -m django # lista commandos Django.
 	python -m django startproject [nombre] # crea un proyecto en Django, agregar un punto despues del nombre crear el proyecto en la misma carpeta.
-	python manage.py # lista de comandos para administrar django.
+	python manage.py # lista de comandos para administrar Django.
+	python manage.py runserver # inicia servidor de Django
+	ctrl + c # detener servidor Django
+	python manage.py startapp [nombre] # crea una aplicación de django
+	python manage.py makemigrations # actualizar cambios modelo 
+	python manage.py migrate # actualizar cambios base de datos
+	python manage.py shell # consola de django
+	python # consola de python
+
 Virtualenv
 	python -m venv [nombre] # crear entorno virtual, usar version especifica de python = C:\Python36\python.exe
 	[nombre]\Scripts\activate # activa el entorno virtual, aparece el nombre en el prompt.
 	deactivate # desactiva el entorno virtual, desaparece el nombre en el prompt.
-Pip
 
+Pip
 	pip list  # ver paquetes instalados y su version.
 	python -m install --upgrade pip  # actualizar pip.
 	pip install -r [archivo] # permite instalar las dependencias del proyecto desde un archivo.
@@ -18,4 +26,3 @@ Windows
 	echo [palabra] # para mostrar mensaje por consola.
 	[contenido] > [nombre].txt # el contenido se guarda en el archivo de texto de una vez.
 	[contenido] >> [nombre].txt # el contenido se guarda en el archivo de texto varias veces (multilinea).
-	
