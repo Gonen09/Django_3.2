@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Django WebSite by Gonen09</h1>
+<h2>Titulo del libro: {{title}}</h2>
+<p>Contenido del libro: {{content}}</p>
+<p>Identificador del libro {{id}}</p>
+
+<ul>
+
+    {% for x in object_list %}
+        {% if x.title %}
+            <li> <a href="/articles/{{x.id}}/"> {{x.title}} - {{x.content}} </a></li>
+        {% endif%}
+    {% endfor %}
+        
+</ul>
+
+{% endblock content %}
