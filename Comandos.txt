@@ -9,6 +9,7 @@ Django
 	python manage.py migrate # actualizar cambios base de datos
 	python manage.py shell # consola de django
 	python # consola de python
+	python manage.py createsuperuser #crea un usuario para Django admin
 
 Virtualenv
 	python -m venv [nombre] # crear entorno virtual, usar version especifica de python = C:\Python36\python.exe
