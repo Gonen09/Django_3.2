@@ -9,7 +9,7 @@ def article_search_view(request):
     query_dict = request.GET  # dictionay
 
     try:
-        query = query_dict.get("q")  # < input type='text' name='q' />
+        query = int(query_dict.get("q"))  # < input type='text' name='q' />
     except:
         query = None
 

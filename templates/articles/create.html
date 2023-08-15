@@ -8,6 +8,11 @@
     <div style="margin-top: 30px;">
         <form action="." method="POST">
             {% csrf_token %}
+
+            {% if error %}
+                <p style="color: red"> { {error }} </p>
+            {% endif %}
+                
             <div>
                 <input type='text' name='title' placeholder='Title'/>
             </div>
