@@ -1,10 +1,13 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 # Create your views here.
 
 
 def login_view(request):
+
+    # if request.user.is_authenticated:
+    #    return render(request, "accounts/already-logged-in.html", {})
 
     if request.method == "POST":
         username = request.POST.get("username")
@@ -24,3 +27,15 @@ def login_view(request):
         return redirect('/admin')
 
     return render(request, "accounts/login.html", {})
+
+
+def logout_view(request):
+
+    if request.method == "POST":
+        logout(request)
+        return redirect("/login/")
+    return render(request, "accounts/logout.html", {})
+
+
+def register_view(request):
+    return render(request, "accounts/register.html", {})
