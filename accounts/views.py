@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -15,6 +15,31 @@ def register_view(request):
     context = {"form": form}
     return render(request, "accounts/register.html", context)
 
+
+def login_view(request):
+
+    # login creado con AuthenticationForm
+
+    # gonen : negonego
+    # pimpa : *pimpollo09*
+
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+
+            user = form.get_user()
+            login(request, user)
+            return redirect('/')
+    else:
+        form = AuthenticationForm(request)
+
+    context = {"form": form}
+    return render(request, "accounts/login.html", context)
+
+
+""" login creado con authenticate 
 
 def login_view(request):
 
@@ -39,6 +64,8 @@ def login_view(request):
         return redirect('/admin')
 
     return render(request, "accounts/login.html", {})
+
+"""
 
 
 def logout_view(request):
