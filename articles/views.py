@@ -28,33 +28,42 @@ def article_search_view(request):
 @login_required
 def article_create_view(request):
 
-    # print (request. POST)
+    # forma con Django ModelForm
+
+    form = ArticleForm(request.POST or None)
+    context = {"form": form}
+
+    if form.is_valid():
+        article_object = form.save()
+        context['form'] = ArticleForm()
+
+    return render(request, "articles/create.html", context=context)
 
     # forma con Django forms
+    """
+    form = ArticleForm(request.POST or None)
+    context = {"form": form}
 
-    form = ArticleForm()
-    # print(dir(form))  # Contenido de articleForm (atributos y metodos)
-    context = {
-        "form": form
-    }
+    if form.is_valid():
 
-    if request.method == "POST":
+        article_object = form.save()  # reemplaza las lineas a continuacion
+        print(request.POST)
+        title = form.cleaned_data.get("title")
+        content = form.cleaned_data.get("content")
+        print(title, content)
+        article_object = Article.objects.create(title=title, content=content)
 
-        form = ArticleForm(request.POST or None)
-        context = {"form": form}
-
-        if form.is_valid():
-            print(request.POST)
-            title = form.cleaned_data.get("title")
-            content = form.cleaned_data.get("content")
-            # print(title, content)
-            article_object = Article.objects.create(
-                title=title, content=content)
-            context['object'] = article_object
-            context['created'] = True
+        context['object'] = article_object
+        context['created'] = True
+    """
 
     """  forma con form
-    
+
+    # print (request. POST)
+    form = ArticleForm()
+    # print(dir(form))  # Contenido de articleForm (atributos y metodos)
+    context = {"form": form}
+
     if request.method == "POST":
 
         print("Post data: ", request.POST)
@@ -65,7 +74,6 @@ def article_create_view(request):
         context['object'] = article_object
         context['created'] = True
     """
-    return render(request, "articles/create.html", context=context)
 
 
 def article_detail_view(request, id=None):
