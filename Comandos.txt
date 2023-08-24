@@ -10,6 +10,7 @@ Django
 	python manage.py shell # consola de django
 	python # consola de python
 	python manage.py createsuperuser #crea un usuario para Django admin
+	python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' #genera un SECRET_KEY
 
 Virtualenv
 	python -m venv [nombre] # crear entorno virtual, usar version especifica de python = C:\Python36\python.exe

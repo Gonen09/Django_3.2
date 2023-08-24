@@ -22,7 +22,7 @@ print("BASE_DIR", BASE_DIR)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
-    'SECRET_KEY', 'django-insecure-1)#ecitf)*s^geztaw@+9h3f*0!ex(%9xqf0rnf(q*@yi9bxfj')
+    'DJANGO_SECRET_KEY', 'django-insecure-1)#ecitf)*s^geztaw@+9h3f*0!ex(%9xqf0rnf(q*@yi9bxfj')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == '1'  # True
@@ -30,7 +30,8 @@ DEBUG = str(os.environ.get('DEBUG')) == '1'  # True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 if not DEBUG:
-    ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOSTS')]
+    ALLOWED_HOSTS += [os.environ.get('DJANGO_ALLOWED_HOST')]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -84,6 +85,32 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+POSTGRES_DB = os.environ.get("POSTGRES_DB")  # DB name
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")  # user password
+POSTGRES_USER = os.environ.get("POSTGRES_USER")  # DB username
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST")  # DB host
+POSTGRES_PORT = os.environ.get("POSTGRES_PORT")  # DB port
+
+POSTGRES_READY = (
+    POSTGRES_DB is not None
+    and POSTGRES_PASSWORD is not None
+    and POSTGRES_USER is not None
+    and POSTGRES_HOST is not None
+    and POSTGRES_PORT is not None
+)
+
+if POSTGRES_READY:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": POSTGRES_DB,
+            "USER": POSTGRES_USER,
+            "PASSWORD": POSTGRES_PASSWORD,
+            "HOST": POSTGRES_HOST,
+            "PORT": POSTGRES_PORT,
+        }
+    }
 
 
 # Password validation
