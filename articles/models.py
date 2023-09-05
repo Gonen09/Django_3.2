@@ -1,14 +1,15 @@
 from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.utils import timezone
-from django.utils.text import slugify
 # Create your models here.
+from .utils import slugify_instance_title
 
 
 class Article(models.Model):
     # Django model-field-types
     title = models.CharField(max_length=120)
-    slug = models.SlugField(blank=True, null=True)  # max_length = 50
+    slug = models.SlugField(unique=True, blank=True,
+                            null=True)  # max_length = 50
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models. DateTimeField(auto_now=True)
@@ -20,21 +21,6 @@ class Article(models.Model):
         # if self.slug is None:
         #    self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
-
-def slugify_instance_title(instance, save=False):
-    slug = slugify(instance.title)
-    qs = Article.objects.filter(slug=slug).exclude(id=instance.id)
-
-    if qs.exists():
-        slug = f"{slug}-{qs. count () + 1}"
-
-    instance.slug = slug
-
-    if save:
-        instance.save()
-
-    return instance
 
 
 def article_pre_save(sender, instance, *args, **kwargs):
