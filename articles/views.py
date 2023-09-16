@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.http import Http404
 from .forms import ArticleForm
@@ -12,14 +11,8 @@ def article_search_view(request):
     """
     Busqueda avanzada
     """
-
-    query = request.GET.get('q')  # dictionay
-    qs = Article.objects.all()
-
-    if query is not None:
-        lookups = Q(title__icontains=query) | Q(content__icontains=query)
-        qs = Article.objects.filter(lookups)
-        # qs = Article.objects.search(query) reemplaza 2 lineas anteriores
+    query = request.GET.get('q')  # dictionary
+    qs = Article.objects.search(query=query)
 
     context = {"object_list": qs}
 
