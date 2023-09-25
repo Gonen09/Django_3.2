@@ -7,8 +7,7 @@ from django.utils import timezone
 # Create your models here.
 from .utils import slugify_instance_title
 
-User = settings.AUTH_USER_MODULE
-
+User = settings.AUTH_USER_MODEL
 
 class ArticleManager(models.Manager):
     def search(self, query=None):
