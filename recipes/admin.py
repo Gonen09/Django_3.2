@@ -7,6 +7,7 @@ User = get_user_model()
 class RecipeIngredientInline(admin.StackedInline): # or admin.TabularInline (horizontal)
     model = RecipeIngredient
     extra = 0 # delete automatically default items number for add 
+    readonly_fields = ['quantity_as_float']
     #field = ['name', 'quanity', 'unit', 'directions'] # without field all fields are shown
 
 class RecipeAdmin(admin.ModelAdmin):
