@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render, get_list_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RecipeForm
 from .models import Recipe
 # CRUD -> Create Retrieve Update & Delete
@@ -16,8 +16,8 @@ def recipe_list_view(request):
 
 
 @login_required
-def recipe_detail_view (request, id=None):
-    obj = get_list_or_404(Recipe, id=id, user=request.user)
+def recipe_detail_view(request, id=None):
+    obj = get_object_or_404(Recipe, id=id, user=request.user)
     context = {
         "object": obj
     }
@@ -41,7 +41,7 @@ def recipe_create_view(request):
 
 @login_required
 def recipe_update_view(request, id=None):
-    obj = get_list_or_404(Recipe, id=id, user=request.user)
+    obj = get_object_or_404(Recipe, id=id, user=request.user)
     form = RecipeForm(request.POST or None, instance=obj)
 
     context = {
