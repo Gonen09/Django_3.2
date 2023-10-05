@@ -5,11 +5,11 @@
   <p>Contenido del libro: {{ content }}</p>
   <p>Identificador del libro {{ id }}</p>
   <ul>
-    <a href='{% url "article-create" %}'>Create Article</a>
+    <a href='{% url "articles:create" %}'>Create Article</a>
     {% for x in object_list %}
       {% if x.title %}
         <li>
-          <a href='{% url "article-detail" slug=x.slug %}'>{{ x.title }} - {{ x.content }}</a>
+          <a href='{% url "articles:detail" slug=x.slug %}'>{{ x.title }} - {{ x.content }}</a>
           <br>
           <a href='{{ x.get_absolute_url }}'>{{ x.title }} - {{ x.content }}</a>
         </li>

@@ -22,15 +22,12 @@ from accounts.views import (
     register_view
 )
 
-from articles import views
 from .views import home_view
 
 urlpatterns = [
     path('', home_view),
     path('pantry/recipes/', include('recipes.urls')),
-    path('articles/', views.article_search_view),
-    path('articles/create/', views.article_create_view, name='article-create'),
-    path('articles/<slug:slug>/', views.article_detail_view, name='article-detail'),
+    path('articles/', include('articles.urls')),
     path('admin/', admin.site.urls),
     path('login/', login_view),
     path('logout/', logout_view),
