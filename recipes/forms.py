@@ -4,7 +4,7 @@ from .models import Recipe, RecipeIngredient
 class RecipeForm(forms.ModelForm):
     error_css_class = 'error-field'
     required_css_class = 'required-field'
-    name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+    name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control", "placeholder":"Recipe name"}), help_text='This is your help <a href="/contact">Contact Us</a>')
     #description = forms.CharField(widget=forms.Textarea(attrs={"rows": 3}))
 
     class Meta:
