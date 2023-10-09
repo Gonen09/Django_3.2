@@ -12,6 +12,7 @@ Django
 	python manage.py createsuperuser #crea un usuario para Django admin
 	python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' #genera un SECRET_KEY
 	python manage.py test [nombre_app] # realiza pruebas automaticas
+	python manage.py dumpdata [nombre_app] --ident [number] > path/folder/file.json # objetos app a json
 
 
 Virtualenv
