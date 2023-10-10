@@ -52,7 +52,7 @@ def recipe_detail_hx_view(request, id=None):
         "object": obj
     }
     
-    return render (request, "recipes/partials/detail.html", context)
+    return render(request, "recipes/partials/detail.html", context)
 
 
 @login_required

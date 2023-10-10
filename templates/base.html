@@ -5,14 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+        <style>
+            .htmx-indicator {
+                display: none;
+            }
+
+            .htmx-request .htmx-idicator{
+                display: inline;
+            }
+
+            .htmx-inverted-indicator{
+                display: inline;
+            }
+
+            .htmx-request .htmx-inverted-indicator{
+                display: none;
+            }
+
+        </style>
     </head>
     <body>
         <h1>Hola Mundo!!!</h1>
-        <form action="/articles/" method="GET">
+        <form action="/articles/" method="get">
             <input type="text" name="q">
             <input type="submit" value="Buscar">
         </form>
         {% block content %}
+            <h3>This will be replaced</h3>
         {% endblock content %}
     </body>
 </html>
