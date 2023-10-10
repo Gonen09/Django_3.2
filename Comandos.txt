@@ -29,5 +29,10 @@ Windows
 	start [directorio] # abrir directorio en explorador de windows, con . abre el directorio actual.
 	color [fondo,letras] # cambiar colores consola, ingresar 3 argumentos para ver la lista de colores.
 	echo [palabra] # para mostrar mensaje por consola.
+	chcp 65001 # cambiar el codigo de pagina de la consola a UTF-8, para guardar en archivo con caracteres especiales
 	[contenido] > [nombre].txt # el contenido se guarda en el archivo de texto de una vez.
 	[contenido] >> [nombre].txt # el contenido se guarda en el archivo de texto varias veces (multilinea).
+	cd [nombre_carpeta] # acceder a carpeta
+	cd .. # volver a carpeta superior
+	dir # ver listado de archivos en carpeta con sus propiedades
+	dir /b # ver listado de archivos en carpeta sin sus propiedades, solo nombres
